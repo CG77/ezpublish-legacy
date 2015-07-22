@@ -5525,7 +5525,7 @@ class eZContentObject extends eZPersistentObject
                     $contentObject->setAttribute( 'remote_id', eZRemoteIdUtility::generate( 'object' ) );
                     $contentObject->store();
                     unset( $contentObject );
-                    $contentObject = $contentClass->instantiate( $ownerID, $sectionID );
+                    $contentObject = $contentClass->instantiateIn( $initialLanguage, $ownerID, $sectionID );
                     $firstVersion = true;
                 } break;
 
@@ -5587,7 +5587,9 @@ class eZContentObject extends eZPersistentObject
                                                                          $firstVersion,
                                                                          $nodeList,
                                                                          $options,
-                                                                         $package );
+                                                                         $package,
+                                                                         'ezcontentobject',
+                                                                         $initialLanguage );
 
             if ( !$contentObjectVersion )
             {
