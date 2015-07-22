@@ -4124,6 +4124,9 @@ class eZContentObjectTreeNode extends eZPersistentObject
             }
             else
             {
+                // This ezpEvent allows to intercept the remove intruction in order to link actions.
+                ezpEvent::getInstance()->notify( 'content/removehandler',  array('object'=>$object) );
+
                 // This is the last assignment so we remove the object too
                 $db = eZDB::instance();
                 $db->begin();
