@@ -142,7 +142,7 @@ class ezpLanguageSwitcher implements ezpLanguageSwitcherCapable
             $pathPrefix = $saIni->variable( 'SiteAccessSettings', 'PathPrefix' );
             if ( !empty( $pathPrefix ) )
             {
-                if ( strpos( $url, $pathPrefix . '/' ) === 0 )
+                if ( ( strpos( $url, $pathPrefix . '/' ) === 0 ) || ( $pathPrefix === $url ) )
                 {
                     $url = substr( $url, strlen( $pathPrefix ) + 1 );
                 }
